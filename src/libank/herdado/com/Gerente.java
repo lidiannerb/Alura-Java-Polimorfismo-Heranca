@@ -1,24 +1,26 @@
 package libank.herdado.com;
+//Gerente herda classe Funcionário e assina a interface Autenticável
+public class Gerente extends Funcionario implements Autenticavel {  //Herdando os atributos da classe funcionário
 
-public class Gerente extends Funcionario {  //Herdando os atraibutos da classe funcionário
+        private AutenticacaoUtil autenticador;
 
-    private int senha;     //necessário somente o atributo pertencente ao gerente, que não se aplica ao funcionário
+        public Gerente(){
+            this.autenticador = new AutenticacaoUtil();
+        }
 
-    public void setSenha(int senha) {
-        this.senha = senha;
+        public double getBonificacao(){
+        System.out.println("Chamando o método de bonificação do Gerente");
+        return super.getSalario();
     }
 
-    public boolean autentica (int senha){
-        if(this.senha == senha){
-            return true;
-        }else {
-            return false;
+
+        @Override
+        public void setSenha(int senha) {
+            this.autenticador.setSenha(senha);
+        }
+
+        @Override
+        public boolean autentica(int senha) {
+            return this.autenticador.autentica(senha);
         }
     }
-
-    public double getBonificacao(){
-        System.out.println("Chamando o método de bonificação do Gerente");
-        return super.getBonificacao() + super.getSalario();
-    }
-
-}

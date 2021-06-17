@@ -1,15 +1,13 @@
 package libank.herdado.com;
+// tornar a classe abstrata impossibita que ela seja instanciada (tornar objeto), mas as subclasses continuam herdando os atributos e métodos dela
+public abstract class Funcionario {
 
-import jdk.swing.interop.SwingInterOpUtils;
-
-public class Funcionario {
     private String nome;
     private String cpf;
     private double salario;
 
-    public double getBonificacao(){
-        return this.salario * 0.05;
-    }
+    //um método abstrato não tem implementação, precisa ser implementado nas subclasses para poder ser usado por elas
+    public abstract double getBonificacao();
 
     public String getNome() {
         return nome;
